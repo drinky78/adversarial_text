@@ -315,7 +315,7 @@ def optimize(loss,
 
     ne_grads, ne_vars = zip(*non_embedding_grads_and_vars)
     ne_grads, _ = tf.clip_by_global_norm(ne_grads, max_grad_norm)
-    non_embedding_grads_and_vars = zip(ne_grads, ne_vars)
+    non_embedding_grads_and_vars = [(g, v) for (g, v) in zip(ne_grads, ne_vars)]
 
     grads_and_vars = embedding_grads_and_vars + non_embedding_grads_and_vars
 
